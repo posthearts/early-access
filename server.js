@@ -14,7 +14,10 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
   .catch((err) => console.error('Failed to connect to MongoDB', err));
 
 // Routes
-app.use('/api/access-codes', accessCodeRoutes);
+app.get('/', (req, res) => {
+    res.send('Welcome to the Access Code API');
+    });
+app.use('/api', accessCodeRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 3000;
